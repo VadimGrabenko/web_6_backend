@@ -1,5 +1,6 @@
 package studying.web_6.controller;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class ToastController {
     private ToastService toastService;
 
     @PostMapping
-    public ResponseEntity<Toast> createToast(@RequestBody Toast toast) {
+    public ResponseEntity<Toast> createToast(@Valid @RequestBody Toast toast) {
         Toast toastCreated = toastService.createToast(toast);
         return new ResponseEntity<>(toastCreated, HttpStatus.CREATED);
     }

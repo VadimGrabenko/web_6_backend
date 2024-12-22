@@ -5,13 +5,13 @@ import studying.web_6.entity.Toast;
 import studying.web_6.service.ToastService;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class ToastServiceImpl implements ToastService {
-    private final Map<Long, Toast> toasts = new HashMap<>();
+    private final Map<Long, Toast> toasts = new ConcurrentHashMap<>();
     private final AtomicLong counter = new AtomicLong(1);
-
 
     @Override
     public Toast createToast(Toast toast) {
@@ -27,8 +27,7 @@ public class ToastServiceImpl implements ToastService {
     }
 
     @Override
-    public Optional<Toast> getToastById(Long id)
-    {
+    public Optional<Toast> getToastById(Long id) {
         return Optional.ofNullable(toasts.get(id));
     }
 

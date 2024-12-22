@@ -1,15 +1,23 @@
 package studying.web_6.entity;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Toast {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
 
-    public Toast(long id, String text) {
-        this.id = id;
+    public Toast(String text) {
         this.text = text;
+    }
+
+    public Toast() {
+
     }
 
     public Long getId() {
